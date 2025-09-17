@@ -3,7 +3,7 @@ from collections import defaultdict
 from datetime import datetime
 from database import (
     insert_transaction, fetch_transactions, delete_transaction_by_id,
-    update_transaction_by_id, get_transactions
+    update_transaction_by_id
 )
 
 class MoneyManager:
@@ -32,7 +32,7 @@ class MoneyManager:
 
     def refresh_transaction_log(self):
         """Refresh the transaction log list widget from the database."""
-        transactions = get_transactions()  # Fetch transactions directly from DB
+        transactions = self.get_transactions()  # Fetch transactions directly from DB
         self.transaction_log.delete(0, END)  # Clear previous entries
 
         # Loop through each transaction and display in list format
